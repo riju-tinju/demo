@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
@@ -9,7 +10,9 @@
     <!-- Font Awesome Icons -->
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         /* Custom Fonts */
         @font-face {
@@ -33,20 +36,29 @@
             color: var(--text-black);
             background-color: var(--muted-bg);
             overflow-x: hidden;
+
         }
+
         body {
-  user-select: none;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none;     /* IE/Edge */
-}
+            user-select: none;
+            -webkit-user-select: none;
+            /* Safari */
+            -ms-user-select: none;
+            /* IE/Edge */
+        }
 
-
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             font-family: 'Chillax', sans-serif;
             font-weight: 700;
         }
 
-        h4, h5, h6, button, .ui-label {
+        h4,
+        h5,
+        h6,
+        button,
+        .ui-label {
             font-family: 'DM Sans', sans-serif;
         }
 
@@ -59,23 +71,23 @@
         .bg-primary {
             background-color: var(--primary-green);
         }
-        
+
         .bg-accent {
             background-color: var(--accent-beige);
         }
-        
+
         .bg-muted {
             background-color: var(--muted-bg);
         }
-        
+
         .text-primary {
             color: var(--primary-green);
         }
-        
+
         .text-accent {
             color: var(--accent-gold);
         }
-        
+
         .btn-primary {
             background-color: var(--primary-green);
             color: white;
@@ -85,12 +97,12 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary:hover {
             background-color: #002a1e;
             transform: translateY(-2px);
         }
-        
+
         .btn-secondary {
             background-color: var(--accent-gold);
             color: white;
@@ -100,7 +112,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
+
         .btn-secondary:hover {
             background-color: #c48b3e;
             transform: translateY(-2px);
@@ -123,7 +135,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
-        
+
         .product-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -136,7 +148,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             z-index: 50;
         }
-        
+
         .bottom-nav {
             height: 70px;
             background-color: white;
@@ -148,7 +160,7 @@
         .search-container {
             position: relative;
         }
-        
+
         .search-input {
             width: 100%;
             padding: 0.75rem 1rem 0.75rem 2.5rem;
@@ -157,13 +169,13 @@
             background-color: #f5f5f5;
             transition: all 0.3s ease;
         }
-        
+
         .search-input:focus {
             background-color: white;
             box-shadow: 0 0 0 2px var(--accent-gold);
             outline: none;
         }
-        
+
         .search-icon {
             position: absolute;
             left: 0.75rem;
@@ -179,7 +191,7 @@
             height: 450px;
             border-radius: 20px;
         }
-        
+
         .slide {
             position: absolute;
             top: 0;
@@ -191,11 +203,11 @@
             background-size: cover;
             background-position: center;
         }
-        
+
         .slide.active {
             opacity: 1;
         }
-        
+
         .slide-content {
             position: absolute;
             bottom: 0;
@@ -219,11 +231,11 @@
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
             overflow-y: auto;
         }
-        
+
         .hamburger-menu.active {
             right: 0;
         }
-        
+
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -236,7 +248,7 @@
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
-        
+
         .menu-overlay.active {
             opacity: 1;
             visibility: visible;
@@ -257,7 +269,7 @@
             box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
             overflow-y: auto;
         }
-        
+
         .cart-container.active {
             bottom: 0;
         }
@@ -274,7 +286,7 @@
             transform: translateX(100%);
             transition: transform 0.3s ease;
         }
-        
+
         .profile-dashboard.active {
             transform: translateX(0);
         }
@@ -298,11 +310,19 @@
 
         /* Animation for Badge */
         @keyframes badgeBounce {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
-        
+
         .badge-animated {
             animation: badgeBounce 0.3s ease;
         }
@@ -317,8 +337,9 @@
             cursor: pointer;
             white-space: nowrap;
         }
-        
-        .category-pill:hover, .category-pill.active {
+
+        .category-pill:hover,
+        .category-pill.active {
             background-color: var(--primary-green);
             color: white;
         }
@@ -337,7 +358,7 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+
         .toast.show {
             opacity: 1;
         }
@@ -348,39 +369,42 @@
                 height: 80px;
                 padding: 0 2rem;
             }
-            
+
             .search-container {
                 width: 400px;
             }
-            
+
             .bottom-nav {
-                display: none; /* Hide bottom nav on desktop */
+                display: none;
+                /* Hide bottom nav on desktop */
             }
-            
+
             .desktop-nav {
-                display: flex; /* Show desktop navigation */
+                display: flex;
+                /* Show desktop navigation */
             }
-            
+
             .mobile-only {
                 display: none;
             }
-            
+
             .desktop-only {
-                display: flex;/* Customized code */
+                display: flex;
+                /* Customized code */
             }
-            
+
             .hero-slider {
                 height: 500px;
             }
-            
+
             .product-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
-            
+
             .hamburger-menu {
                 /* width: 350px; */
             }
-            
+
             .cart-container {
                 width: 450px;
                 height: 100vh;
@@ -390,7 +414,7 @@
                 left: auto;
                 border-radius: 0;
             }
-            
+
             .cart-container.active {
                 right: 0;
                 bottom: auto;
@@ -400,22 +424,23 @@
                 margin-top: 80px;
                 padding: 0 2rem;
             }
-            
+
             .product-details {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 gap: 2rem;
             }
-            
+
             .category-section {
                 display: grid;
                 grid-template-columns: 250px 1fr;
                 gap: 2rem;
             }
+
             .profile-dashboard.active {
-            width: auto;
+                width: auto;
             }
-            
+
         }
 
         /* Hide desktop elements on mobile */
@@ -423,13 +448,14 @@
             .desktop-only {
                 display: none;
             }
-            
+
             .desktop-nav {
                 display: none;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Toast Notification -->
     <div id="toast" class="toast">Item added to wishlist!</div>
@@ -438,7 +464,8 @@
     <header class="top-nav fixed top-0 left-0 w-full flex items-center justify-between px-4 lg:px-8">
         <!-- Logo -->
         <div class="logo flex items-center">
-            <h1 class="text-2xl lg:text-3xl font-bold text-primary">Brewed</h1>
+            <!-- <h1 class="text-2xl lg:text-3xl font-bold text-primary">Brewed</h1> -->
+            <img src="./assets/logo.svg" style="height: 48px;width:auto"></img>
         </div>
 
         <!-- Desktop Navigation (Only visible on desktop) -->
@@ -451,13 +478,13 @@
         </nav> -->
 
         <!-- Search Bar (Flexible Width) -->
-        <div class="search-container mx-4 flex-grow lg:flex-grow-0 max-w-md">
+        <div class="search-container mx-4 flex-grow lg:flex-grow-0 max-w-md desktop-only">
             <i class="fas fa-search search-icon"></i>
             <input type="text" class="search-input w-full" placeholder="Search for coffee, desserts...">
         </div>
 
         <!-- Desktop Action Buttons  (Customized) -->
-         <!-- <style>
+        <!-- <style>
             @media screen and (min-width: 1050px) {
                 .desktop-only-buttons {
                     display: flex;
@@ -488,21 +515,24 @@
     <main class="main-container mt-20 lg:mt-24 pb-20 lg:pb-10 px-4 lg:px-8">
         <!-- Hero Banner Slider -->
         <section class="hero-slider mb-8 lg:mb-12">
-            <div class="slide active" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');">
+            <div class="slide active"
+                style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');">
                 <div class="slide-content">
                     <h2 class="text-3xl lg:text-4xl font-bold mb-2">Summer Specials</h2>
                     <p class="mb-4">Refresh with our seasonal iced drinks collection</p>
                     <button class="btn-secondary">Shop Now</button>
                 </div>
             </div>
-            <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1507133750040-4a37f2d12f8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');">
+            <div class="slide"
+                style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1507133750040-4a37f2d12f8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');">
                 <div class="slide-content">
                     <h2 class="text-3xl lg:text-4xl font-bold mb-2">Artisan Pastries</h2>
                     <p class="mb-4">Freshly baked daily by our master chefs</p>
                     <button class="btn-secondary">Explore Menu</button>
                 </div>
             </div>
-            <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1559305616-3f99cd43e353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');">
+            <div class="slide"
+                style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1559305616-3f99cd43e353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');">
                 <div class="slide-content">
                     <h2 class="text-3xl lg:text-4xl font-bold mb-2">Premium Coffee</h2>
                     <p class="mb-4">Sourced from sustainable farms worldwide</p>
@@ -538,7 +568,8 @@
                 <!-- Product Card 1 -->
                 <div class="product-card">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1037&q=80" alt="Espresso" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1037&q=80"
+                            alt="Espresso" class="w-full h-48 object-cover">
                         <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
                             <i class="far fa-heart text-gray-600"></i>
                         </button>
@@ -558,15 +589,17 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="font-bold">$3.50</span>
-                            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
+                            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i
+                                    class="fas fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product Card 2 -->
                 <div class="product-card">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1579888944880-d98341245702?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Croissant" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1579888944880-d98341245702?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                            alt="Croissant" class="w-full h-48 object-cover">
                         <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
                             <i class="far fa-heart text-gray-600"></i>
                         </button>
@@ -586,15 +619,17 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="font-bold">$2.75</span>
-                            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
+                            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i
+                                    class="fas fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product Card 3 -->
                 <div class="product-card">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80" alt="Latte" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80"
+                            alt="Latte" class="w-full h-48 object-cover">
                         <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
                             <i class="far fa-heart text-gray-600"></i>
                         </button>
@@ -614,15 +649,17 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="font-bold">$4.25</span>
-                            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
+                            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i
+                                    class="fas fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product Card 4 -->
                 <div class="product-card">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Cold Brew" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80"
+                            alt="Cold Brew" class="w-full h-48 object-cover">
                         <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
                             <i class="far fa-heart text-gray-600"></i>
                         </button>
@@ -642,7 +679,8 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="font-bold">$4.50</span>
-                            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
+                            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i
+                                    class="fas fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
@@ -654,17 +692,23 @@
             <div class="flex flex-col lg:flex-row">
                 <div class="p-6 lg:p-10 lg:w-1/2">
                     <h2 class="text-2xl lg:text-4xl font-bold mb-4 text-primary">Join Our Loyalty Program</h2>
-                    <p class="mb-6 text-gray-700">Earn points with every purchase and unlock exclusive rewards, free items, and special offers.</p>
+                    <p class="mb-6 text-gray-700">Earn points with every purchase and unlock exclusive rewards, free
+                        items, and special offers.</p>
                     <ul class="mb-8 space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Free drink on your birthday</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> 10 points for every $1 spent</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Exclusive member-only events</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Early access to seasonal drinks</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Free drink
+                            on your birthday</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> 10 points
+                            for every $1 spent</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Exclusive
+                            member-only events</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Early access
+                            to seasonal drinks</li>
                     </ul>
                     <button class="btn-primary">Join Now - It's Free</button>
                 </div>
                 <div class="lg:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80" alt="Loyalty Program" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80"
+                        alt="Loyalty Program" class="w-full h-full object-cover">
                 </div>
             </div>
         </section>
@@ -675,34 +719,38 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Step 1 -->
                 <div class="bg-white rounded-xl p-6 text-center">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
+                    <div
+                        class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
                         <i class="fas fa-search"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Browse Menu</h3>
                     <p class="text-gray-600">Explore our wide range of coffee, drinks, food and merchandise.</p>
                 </div>
-                
+
                 <!-- Step 2 -->
                 <div class="bg-white rounded-xl p-6 text-center">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
+                    <div
+                        class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
                         <i class="fas fa-shopping-bag"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Add to Cart</h3>
                     <p class="text-gray-600">Select your favorite items and add them to your shopping cart.</p>
                 </div>
-                
+
                 <!-- Step 3 -->
                 <div class="bg-white rounded-xl p-6 text-center">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
+                    <div
+                        class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
                         <i class="fas fa-credit-card"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Checkout</h3>
                     <p class="text-gray-600">Securely pay and choose pickup or delivery options.</p>
                 </div>
-                
+
                 <!-- Step 4 -->
                 <div class="bg-white rounded-xl p-6 text-center">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
+                    <div
+                        class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
                         <i class="fas fa-mug-hot"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Enjoy!</h3>
@@ -724,7 +772,8 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="mb-4 text-gray-700">"The best coffee in town! Their seasonal specials are always a delight and the app makes ordering so convenient."</p>
+                    <p class="mb-4 text-gray-700">"The best coffee in town! Their seasonal specials are always a delight
+                        and the app makes ordering so convenient."</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-primary rounded-full mr-3"></div>
                         <div>
@@ -733,7 +782,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Testimonial 2 -->
                 <div class="bg-white rounded-xl p-6 shadow-sm">
                     <div class="flex text-accent mb-4">
@@ -743,7 +792,8 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="mb-4 text-gray-700">"I love their loyalty program! I've earned so many free drinks and the birthday reward is always something to look forward to."</p>
+                    <p class="mb-4 text-gray-700">"I love their loyalty program! I've earned so many free drinks and the
+                        birthday reward is always something to look forward to."</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-primary rounded-full mr-3"></div>
                         <div>
@@ -752,7 +802,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Testimonial 3 -->
                 <div class="bg-white rounded-xl p-6 shadow-sm">
                     <div class="flex text-accent mb-4">
@@ -762,7 +812,8 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <p class="mb-4 text-gray-700">"The pastries are always fresh and the staff is incredibly friendly. My go-to spot for work meetings and casual catchups."</p>
+                    <p class="mb-4 text-gray-700">"The pastries are always fresh and the staff is incredibly friendly.
+                        My go-to spot for work meetings and casual catchups."</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-primary rounded-full mr-3"></div>
                         <div>
@@ -777,9 +828,11 @@
         <!-- Newsletter Section -->
         <section class="bg-primary rounded-2xl p-8 text-white text-center">
             <h2 class="text-2xl lg:text-3xl font-bold mb-4">Stay Connected</h2>
-            <p class="mb-6 max-w-lg mx-auto">Subscribe to our newsletter for exclusive offers, new product announcements, and coffee brewing tips.</p>
+            <p class="mb-6 max-w-lg mx-auto">Subscribe to our newsletter for exclusive offers, new product
+                announcements, and coffee brewing tips.</p>
             <div class="flex flex-col md:flex-row max-w-md mx-auto">
-                <input type="email" placeholder="Your email address" class="px-4 py-3 rounded-l-lg md:flex-grow focus:outline-none text-black">
+                <input type="email" placeholder="Your email address"
+                    class="px-4 py-3 rounded md:flex-grow focus:outline-none text-black">
                 <button class="btn-secondary rounded-r-lg mt-2 md:mt-0">Subscribe</button>
             </div>
         </section>
@@ -821,7 +874,7 @@
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        
+
         <div class="p-6">
             <div class="mb-6">
                 <h3 class="text-sm uppercase text-gray-500 mb-3">User & Settings</h3>
@@ -846,7 +899,7 @@
                     </li>
                 </ul>
             </div>
-            
+
             <div class="mb-6">
                 <h3 class="text-sm uppercase text-gray-500 mb-3">Help & Info</h3>
                 <ul class="space-y-4">
@@ -870,7 +923,7 @@
                     </li>
                 </ul>
             </div>
-            
+
             <div>
                 <h3 class="text-sm uppercase text-gray-500 mb-3">Legal & Extras</h3>
                 <ul class="space-y-4">
@@ -906,7 +959,7 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            
+
             <div id="cart-items" class="mb-6">
                 <!-- Empty state -->
                 <div id="empty-cart" class="text-center py-8">
@@ -914,10 +967,10 @@
                     <p class="text-gray-500">Your cart is empty</p>
                     <button class="btn-primary mt-4">Start Shopping</button>
                 </div>
-                
+
                 <!-- Cart items will be added here dynamically -->
             </div>
-            
+
             <div class="border-t pt-4 space-y-3">
                 <div class="flex justify-between">
                     <span class="text-gray-600">Subtotal</span>
@@ -931,7 +984,7 @@
                     <span>Total</span>
                     <span id="cart-total">$0.00</span>
                 </div>
-                
+
                 <button class="btn-primary w-full mt-4 py-3">Proceed to Checkout</button>
             </div>
         </div>
@@ -946,10 +999,11 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            
+
             <!-- Profile Header -->
             <div class="flex items-center mb-8">
-                <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white text-3xl mr-4">
+                <div
+                    class="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white text-3xl mr-4">
                     <i class="fas fa-user"></i>
                 </div>
                 <div>
@@ -961,7 +1015,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Loyalty Section -->
             <div class="bg-accent bg-opacity-20 rounded-xl p-4 mb-8">
                 <div class="flex justify-between items-center mb-2">
@@ -973,7 +1027,7 @@
                 </div>
                 <p class="text-sm text-gray-500">Sign in to start earning rewards</p>
             </div>
-            
+
             <!-- Quick Links -->
             <div class="space-y-4">
                 <a href="#" class="flex justify-between items-center p-4 bg-white rounded-xl shadow-sm">
@@ -983,7 +1037,7 @@
                     </div>
                     <i class="fas fa-chevron-right text-gray-400"></i>
                 </a>
-                
+
                 <a href="#" class="flex justify-between items-center p-4 bg-white rounded-xl shadow-sm">
                     <div class="flex items-center">
                         <i class="fas fa-map-marker-alt text-lg text-primary mr-3"></i>
@@ -991,7 +1045,7 @@
                     </div>
                     <i class="fas fa-chevron-right text-gray-400"></i>
                 </a>
-                
+
                 <a href="#" class="flex justify-between items-center p-4 bg-white rounded-xl shadow-sm">
                     <div class="flex items-center">
                         <i class="fas fa-credit-card text-lg text-primary mr-3"></i>
@@ -999,7 +1053,7 @@
                     </div>
                     <i class="fas fa-chevron-right text-gray-400"></i>
                 </a>
-                
+
                 <a href="#" class="flex justify-between items-center p-4 bg-white rounded-xl shadow-sm">
                     <div class="flex items-center">
                         <i class="fas fa-bell text-lg text-primary mr-3"></i>
@@ -1007,7 +1061,7 @@
                     </div>
                     <i class="fas fa-chevron-right text-gray-400"></i>
                 </a>
-                
+
                 <a href="#" class="flex justify-between items-center p-4 bg-white rounded-xl shadow-sm">
                     <div class="flex items-center">
                         <i class="fas fa-cog text-lg text-primary mr-3"></i>
@@ -1025,71 +1079,71 @@
         let wishlistItems = [];
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
-        
+
         // Initialize the application
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             loadFromLocalStorage();
             updateCartCount();
             updateWishlistCount();
             setupEventListeners();
             startSlideshow();
         });
-        
+
         // Set up event listeners
         function setupEventListeners() {
             // Hamburger Menu
             document.getElementById('hamburger-btn').addEventListener('click', toggleMenu);
             document.getElementById('close-menu-btn').addEventListener('click', toggleMenu);
             document.getElementById('menu-overlay').addEventListener('click', toggleMenu);
-            
+
             // Cart
             document.getElementById('cart-btn').addEventListener('click', toggleCart);
             document.getElementById('close-cart-btn').addEventListener('click', toggleCart);
             if (document.getElementById('desktop-cart-btn')) {
                 document.getElementById('desktop-cart-btn').addEventListener('click', toggleCart);
             }
-            
+
             // Profile
             document.getElementById('profile-btn').addEventListener('click', toggleProfile);
             document.getElementById('close-profile-btn').addEventListener('click', toggleProfile);
             if (document.getElementById('desktop-profile-btn')) {
                 document.getElementById('desktop-profile-btn').addEventListener('click', toggleProfile);
             }
-            
+
             // Wishlist buttons
             document.getElementById('wishlist-btn').addEventListener('click', showWishlist);
             if (document.getElementById('desktop-wishlist-btn')) {
                 document.getElementById('desktop-wishlist-btn').addEventListener('click', showWishlist);
             }
-            
+
             // Add to wishlist
             const wishlistButtons = document.querySelectorAll('.wishlist-btn');
             wishlistButtons.forEach(button => {
                 button.addEventListener('click', addToWishlist);
             });
-            
+
             // Add to cart
             const addToCartButtons = document.querySelectorAll('.add-to-cart');
             addToCartButtons.forEach(button => {
                 button.addEventListener('click', addToCart);
             });
-            
+
             // Category pills
             const categoryPills = document.querySelectorAll('.category-pill');
             categoryPills.forEach(pill => {
-                pill.addEventListener('click', function() {
+                pill.addEventListener('click', function () {
                     document.querySelector('.category-pill.active').classList.remove('active');
                     this.classList.add('active');
                 });
             });
         }
-        
+
         // Toggle Hamburger Menu
         function toggleMenu() {
             document.getElementById('hamburger-menu').classList.toggle('active');
             document.getElementById('menu-overlay').classList.toggle('active');
         }
-        
+
         // Toggle Cart
         function toggleCart() {
             document.getElementById('cart-container').classList.toggle('active');
@@ -1097,39 +1151,37 @@
                 document.getElementById('menu-overlay').classList.toggle('active');
             }
         }
-        
+
         // Toggle Profile
         function toggleProfile() {
             document.getElementById('profile-dashboard').classList.toggle('active');
-            // if (window.innerWidth < 1024) { // Only show overlay on mobile
-            //     document.getElementById('menu-overlay').classList.toggle('active');
-            // }
+
         }
-        
+
         // Show wishlist
         function showWishlist() {
             alert('Wishlist functionality would display here');
             // In a real implementation, this would show a wishlist modal or navigate to wishlist page
         }
-        
+
         // Add to wishlist
         function addToWishlist(event) {
             event.stopPropagation();
             const productCard = this.closest('.product-card');
             const productName = productCard.querySelector('h3').textContent;
-            
+
             // Check if item is already in wishlist
             const inWishlist = wishlistItems.includes(productName);
-            
+
             if (!inWishlist) {
                 // Add to wishlist
                 wishlistItems.push(productName);
                 saveToLocalStorage();
                 updateWishlistCount();
-                
+
                 // Change heart icon to filled
                 this.innerHTML = '<i class="fas fa-heart text-accent"></i>';
-                
+
                 // Show toast notification
                 showToast('Added to wishlist!');
             } else {
@@ -1137,25 +1189,25 @@
                 wishlistItems = wishlistItems.filter(item => item !== productName);
                 saveToLocalStorage();
                 updateWishlistCount();
-                
+
                 // Change heart icon back to outline
                 this.innerHTML = '<i class="far fa-heart text-gray-600"></i>';
-                
+
                 // Show toast notification
                 showToast('Removed from wishlist');
             }
         }
-        
+
         // Add to cart
         function addToCart(event) {
             event.stopPropagation();
             const productCard = this.closest('.product-card');
             const productName = productCard.querySelector('h3').textContent;
             const productPrice = productCard.querySelector('.font-bold').textContent.replace('$', '');
-            
+
             // Check if item is already in cart
             const existingItemIndex = cartItems.findIndex(item => item.name === productName);
-            
+
             if (existingItemIndex > -1) {
                 // Increment quantity if already in cart
                 cartItems[existingItemIndex].quantity += 1;
@@ -1167,13 +1219,13 @@
                     quantity: 1
                 });
             }
-            
+
             saveToLocalStorage();
             updateCartCount();
             showToast('Added to cart!');
             animateCartBadge();
         }
-        
+
         // Update cart count
         function updateCartCount() {
             const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -1181,10 +1233,10 @@
             if (document.getElementById('desktop-cart-count')) {
                 document.getElementById('desktop-cart-count').textContent = totalItems;
             }
-            
+
             // Update cart total
             updateCartTotal();
-            
+
             // Show/hide empty cart message
             if (totalItems === 0) {
                 document.getElementById('empty-cart').style.display = 'block';
@@ -1192,7 +1244,7 @@
                 document.getElementById('empty-cart').style.display = 'none';
             }
         }
-        
+
         // Update wishlist count
         function updateWishlistCount() {
             document.getElementById('wishlist-count').textContent = wishlistItems.length;
@@ -1200,29 +1252,29 @@
                 document.getElementById('desktop-wishlist-count').textContent = wishlistItems.length;
             }
         }
-        
+
         // Update cart total
         function updateCartTotal() {
             const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
             const tax = subtotal * 0.08; // 8% tax
             const total = subtotal + tax;
-            
+
             document.getElementById('cart-subtotal').textContent = '$' + subtotal.toFixed(2);
             document.getElementById('cart-tax').textContent = '$' + tax.toFixed(2);
             document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
         }
-        
+
         // Show toast notification
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.classList.add('show');
-            
+
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
         }
-        
+
         // Animate cart badge
         function animateCartBadge() {
             const badges = document.querySelectorAll('.badge');
@@ -1233,35 +1285,36 @@
                 }, 300);
             });
         }
-        
+
         // Save to localStorage
         function saveToLocalStorage() {
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
             localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
         }
-        
+
         // Load from localStorage
         function loadFromLocalStorage() {
             const savedCart = localStorage.getItem('cartItems');
             const savedWishlist = localStorage.getItem('wishlistItems');
-            
+
             if (savedCart) cartItems = JSON.parse(savedCart);
             if (savedWishlist) wishlistItems = JSON.parse(savedWishlist);
         }
-        
+
         // Slideshow functionality
         function startSlideshow() {
             setInterval(() => {
                 // Hide current slide
                 slides[currentSlide].classList.remove('active');
-                
+
                 // Calculate next slide index
                 currentSlide = (currentSlide + 1) % slides.length;
-                
+
                 // Show next slide
                 slides[currentSlide].classList.add('active');
             }, 5000); // Change slide every 5 seconds
         }
     </script>
 </body>
+
 </html>

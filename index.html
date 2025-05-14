@@ -1168,6 +1168,7 @@
                 if (!response.ok) {
                     reject(new Error("Failed to fetch wishlist items"));
                     throw new Error(`HTTP error! status: ${response.status}`);
+                    setTimeout(() => console.log("delay before err"), 3000); 
                 }
 
                 items = await response.json(); // Parse the JSON response
@@ -1637,6 +1638,7 @@
                 });
 
                 if (!response.ok) {
+                    setTimeout(() => console.log("delay before err"), 3000); 
                     reject(new Error("Failed to fetch cart items"));
                     return;
                 }

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Notification Demo</title>
+    <link rel="manifest" href="/manifest.json"> <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #status {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .granted { color: green; }
+        .denied { color: red; }
+        .default { color: orange; }
+    </style>
+</head>
+<body>
+    <h1>Frontend Notification Demo</h1>
+
+    <p>This page will request notification permission after 5 seconds.</p>
+
+    <div id="status">Waiting to request permission...</div>
+
+    <button id="showNotificationBtn" disabled>Show Local Notification</button>
+
+    <script>
+        const statusDiv = document.getElementById('status');
+        const showNotificationBtn = document.getElementById('showNotificationBtn');
+        const permissionDelay = 5000; // 5 seconds
+
+        // Function to update the status message
+        function updateStatus(message, className = '') {
+            statusDiv.textContent = message;
+            statusDiv.className = ''; // Clear previous classes
+            if (className) {
+                statusDiv.classList.add(className);
+            }
+        }
+
+        // Function to request notification permission
+        function requestNotificationPermission() {
+            // Check if the browser supports the Notification API
+            if (!('Notification' in window)) {
+                updateStatus('This browser does not support notifications.', 'error');
+                return;
+            }
+
+            // Check current permission status
+            if (Notification.permission === 'granted') {
+                updateStatus('Notification permission already granted!', 'granted');
+                showNotificationBtn.disabled = false; // Enable button if already granted
+            } else if (Notification.permission === 'denied') {
+                 updateStatus('Notification permission previously denied.', 'denied');
+            } else {
+                // Request permission
+                updateStatus('Requesting notification permission...', 'default');
+                Notification.requestPermission()
+                    .then(permission => {
+                        console.log('Notification permission status:', permission);
+                        if (permission === 'granted') {
+                            updateStatus('Notification permission granted!', 'granted');
+                            showNotificationBtn.disabled = false; // Enable button
+                        } else if (permission === 'denied') {
+                            updateStatus('Notification permission denied.', 'denied');
+                        } else {
+                             updateStatus('Notification permission request dismissed.', 'default');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error requesting notification permission:', error);
+                        updateStatus('Error requesting notification permission.', 'error');
+                    });
+            }
+        }
+
+        // Function to show a local notification
+        function showLocalNotification() {
+            // Check if permission is granted before showing notification
+            if (Notification.permission === 'granted') {
+                new Notification('Hello from the Frontend!', {
+                    body: 'This is a local notification triggered by a button click.',
+                    icon: '/images/icon-192x192.png' // Optional icon
+                });
+            } else {
+                updateStatus('Notification permission is not granted.', 'denied');
+            }
+        }
+
+        // Set a timer to request permission after the specified delay
+        setTimeout(requestNotificationPermission, permissionDelay);
+
+        // Add event listener to the button
+        showNotificationBtn.addEventListener('click', showLocalNotification);
+
+        // Initial check on page load
+         if (!('Notification' in window)) {
+            updateStatus('This browser does not support notifications.', 'error');
+         } else if (Notification.permission === 'granted') {
+            updateStatus('Notification permission already granted!', 'granted');
+            showNotificationBtn.disabled = false;
+         } else if (Notification.permission === 'denied') {
+             updateStatus('Notification permission previously denied.', 'denied');
+         }
+
+
+    </script>
+</body>
+</html>
+```json
+/*
+
+*/
+```text
+/*
+1. Save the HTML code as `index.html`.
+2. Create a folder named `images` in the same directory as `index.html`.
+3. Place at least a `icon-192x192.png` file (and optionally `icon-512x512.png`) in the `images` folder. These are used for the notification icon and manifest.
+4. Save the JSON code as `manifest.json` in the same directory as `index.html`.
+5. Open the `index.html` file in your web browser.
+6. Wait for 5 seconds. You should see a browser prompt asking for notification permission.
+7. Grant the permission.
+8. The "Show Local Notification" button should become enabled.
+9. Click the button to see a local notification appear.
+
+Note: This demo does NOT involve a backend server or Service Worker for sending *push* notifications. It only demonstrates requesting permission and showing *local* notifications from the frontend JavaScript.
+*/

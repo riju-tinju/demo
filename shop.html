@@ -12,8 +12,9 @@
   <!-- Chillax Font From Chatgpt -->
   <link href="https://api.fontshare.com/v2/css?f[]=chillax@400,500,600,700&display=swap" rel="stylesheet">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
     * {
       -webkit-tap-highlight-color: transparent;
@@ -115,6 +116,33 @@
       background-color: #c48b3e;
       transform: translateY(-2px);
     }
+    .hide{
+      display: none;
+    }
+    /* Add this to your global CSS */
+    @keyframes fadeInSlide {
+      from {
+        opacity: 0;
+        transform: translateY(-5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeInSlide 0.3s ease-out;
+    }
+
+    /* Fade-out animation */
+    .fade-out {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 300ms ease, transform 300ms ease;
+    }
+
 
     /* Frosted Glass Effect */
     .frosted-glass {
@@ -409,7 +437,7 @@
     <!-- Logo -->
     <div class="logo flex items-center">
       <!-- <h1 class="text-2xl lg:text-3xl font-bold text-primary">Brewed</h1> -->
-      <img src="logo.svg" style="height: 48px;width:auto"></img>
+      <img src="/assets/logo.svg" style="height: 48px;width:auto"></img>
     </div>
 
     <!-- Search Bar (Flexible Width) -->
@@ -433,11 +461,11 @@
       </div>
     </div>
     <script>
-      document.getElementById('desktop-profile-btn').addEventListener('click', function() {
+      document.getElementById('desktop-profile-btn').addEventListener('click', function () {
         const profileDashboard = document.querySelector('.profile-dashboard');
         profileDashboard.classList.toggle('active');
         document.querySelector('.menu-overlay').classList.toggle('active');
-        document.getElementById('close-profile-btn').addEventListener('click', function() {
+        document.getElementById('close-profile-btn').addEventListener('click', function () {
           document.querySelector('.menu-overlay').classList.remove('active');
         });
       });
@@ -447,321 +475,1062 @@
       <i class="fas fa-bars"></i>
     </button>
   </header>
-
-  <!-- Main Content -->
-  <!-- Main Product Listing Content -->
+<!-- Main Content -->
+<!-- Main Product Listing Content -->
 <main class="main-container mt-20 lg:mt-24 pb-20 lg:pb-10 px-4 lg:px-8">
-    <!-- Page Title -->
-    <div class="py-3">
-      <h1 class="text-2xl lg:text-3xl font-bold">Our Products</h1>
-      <p class="text-sm text-gray-500">Find your favorite coffee and treats</p>
+  <!-- Page Title -->
+  <div class="py-3">
+    <h1 class="text-2xl lg:text-3xl font-bold">Our Products</h1>
+    <p class="text-sm text-gray-500">Find your favorite coffee and treats</p>
+  </div>
+
+  <!-- Search and Filter Bar -->
+  <div class="flex items-center mb-4 rounded-lg bg-white p-2">
+    <div class="search-container flex-grow flex items-center relative">
+      <i id="product-search-icon" class="fas fa-search search-icon"></i>
+      <input id="product-search-input" type="text" class="search-input w-full" placeholder="Search for products...">
     </div>
-
-    <!-- Search and Filter Bar -->
-    <div class="flex items-center mb-4 rounded-lg bg-white p-2">
-      <div class="search-container flex-grow flex items-center relative">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" class="search-input w-full" placeholder="Search for products...">
-      </div>
-      <div class="flex items-center">
-        <button id="brand-btn" class="ml-2 p-2 rounded-full hover:bg-gray-100">
-          <i class="fas fa-crown text-gray-600"></i>
-        </button>
-        <button id="sort-btn" class="ml-2 p-2 rounded-full hover:bg-gray-100">
-          <i class="fas fa-sort text-gray-600"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- Categories Scrollable Tabs -->
-    <div class="mb-6">
-      <div class="flex overflow-x-auto space-x-3 py-2 no-scrollbar">
-        <div class="category-pill active">All</div>
-        <div class="category-pill">Best Selling</div>
-        <div class="category-pill">Coffee</div>
-        <div class="category-pill">Cold Drinks</div>
-        <div class="category-pill">Pastries</div>
-        <div class="category-pill">Candy</div>
-        <div class="category-pill">Saudi Products</div>
-        <div class="category-pill">Breakfast</div>
-        <div class="category-pill">Merchandise</div>
-      </div>
-    </div>
-    <style>
-      .show-filter-status {
-        background: var(--accent-beige);
-        color: var(--primary-green);
-        padding: 6px 12px;
-      }
-    </style>
-    <!-- Products Count and Active Filters -->
-    <div class="flex items-center mb-4" style="column-gap: 12px;">
-      <!-- <p class="text-sm text-gray-600">Showing 24 products</p> -->
-      <div class="flex items-center ">
-        <span class="text-sm text-accent" style="color: #4D5765; font-weight: 600;">Filter: </span>
-        <span class="text-sm ml-1 bg-primary text-white px-2 py-1 rounded-full flex items-center show-filter-status">
-          New Items
-          <i class="fas fa-times ml-1 text-xs"></i>
-        </span>
-      </div>
-      <div class="flex items-center ">
-        <span class="text-sm text-accent" style="color: #4D5765; font-weight: 600;">Brand: </span>
-        <span class="text-sm ml-1 bg-primary text-white px-2 py-1 rounded-full flex items-center show-filter-status">
-          Jexlyn
-          <i class="fas fa-times ml-1 text-xs"></i>
-        </span>
-      </div>
-    </div>
-
-    <!-- Product Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 lg:gap-6 mb-8">
-      <!-- Product Card 1 (reusing structure from your code) -->
-      <div class="product-card">
-        <div class="relative">
-          <img
-            src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1037&q=80"
-            alt="Espresso" class="w-full h-48 object-cover">
-          <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
-            <i class="far fa-heart text-gray-600"></i>
-          </button>
-        </div>
-        <div class="p-4">
-          <div class="text-sm text-gray-500 mb-1">Coffee</div>
-          <h3 class="font-bold mb-1">Double Espresso</h3>
-          <div class="flex items-center mb-3">
-            <div class="flex text-accent">
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star-half-alt text-sm"></i>
-            </div>
-            <span class="text-sm text-gray-500 ml-1">(42)</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="font-bold">$3.50</span>
-            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product Card 2 -->
-      <div class="product-card">
-        <div class="relative">
-          <img
-            src="https://images.unsplash.com/photo-1579888944880-d98341245702?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-            alt="Croissant" class="w-full h-48 object-cover">
-          <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
-            <i class="far fa-heart text-gray-600"></i>
-          </button>
-        </div>
-        <div class="p-4">
-          <div class="text-sm text-gray-500 mb-1">Pastry</div>
-          <h3 class="font-bold mb-1">Butter Croissant</h3>
-          <div class="flex items-center mb-3">
-            <div class="flex text-accent">
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-            </div>
-            <span class="text-sm text-gray-500 ml-1">(87)</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="font-bold">$2.75</span>
-            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product Card 3 -->
-      <div class="product-card">
-        <div class="relative">
-          <div class="absolute top-0 left-0 bg-accent-gold text-white text-xs px-2 py-1 rounded-tr-md rounded-bl-md">NEW
-          </div>
-          <img
-            src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80"
-            alt="Latte" class="w-full h-48 object-cover">
-          <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
-            <i class="far fa-heart text-gray-600"></i>
-          </button>
-        </div>
-        <div class="p-4">
-          <div class="text-sm text-gray-500 mb-1">Coffee</div>
-          <h3 class="font-bold mb-1">Vanilla Latte</h3>
-          <div class="flex items-center mb-3">
-            <div class="flex text-accent">
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="far fa-star text-sm"></i>
-            </div>
-            <span class="text-sm text-gray-500 ml-1">(36)</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="font-bold">$4.25</span>
-            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product Card 4 -->
-      <div class="product-card">
-        <div class="relative">
-          <img
-            src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80"
-            alt="Cold Brew" class="w-full h-48 object-cover">
-          <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
-            <i class="far fa-heart text-gray-600"></i>
-          </button>
-        </div>
-        <div class="p-4">
-          <div class="text-sm text-gray-500 mb-1">Cold Drinks</div>
-          <h3 class="font-bold mb-1">Cold Brew</h3>
-          <div class="flex items-center mb-3">
-            <div class="flex text-accent">
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star-half-alt text-sm"></i>
-            </div>
-            <span class="text-sm text-gray-500 ml-1">(64)</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="font-bold">$4.50</span>
-            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product Card 5 -->
-      <div class="product-card">
-        <div class="relative">
-          <img
-            src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80"
-            alt="Caramel Macchiato" class="w-full h-48 object-cover">
-          <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
-            <i class="far fa-heart text-gray-600"></i>
-          </button>
-        </div>
-        <div class="p-4">
-          <div class="text-sm text-gray-500 mb-1">Coffee</div>
-          <h3 class="font-bold mb-1">Caramel Macchiato</h3>
-          <div class="flex items-center mb-3">
-            <div class="flex text-accent">
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-            </div>
-            <span class="text-sm text-gray-500 ml-1">(91)</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="font-bold">$4.75</span>
-            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product Card 6 -->
-      <div class="product-card">
-        <div class="relative">
-          <div class="absolute top-0 left-0 bg-primary text-white text-xs px-2 py-1 rounded-tr-md rounded-bl-md">
-            BESTSELLER</div>
-          <img
-            src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80"
-            alt="Cappuccino" class="w-full h-48 object-cover">
-          <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
-            <i class="far fa-heart text-gray-600"></i>
-          </button>
-        </div>
-        <div class="p-4">
-          <div class="text-sm text-gray-500 mb-1">Coffee</div>
-          <h3 class="font-bold mb-1">Cappuccino</h3>
-          <div class="flex items-center mb-3">
-            <div class="flex text-accent">
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-              <i class="far fa-star text-sm"></i>
-            </div>
-            <span class="text-sm text-gray-500 ml-1">(78)</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="font-bold">$4.25</span>
-            <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Load More Button -->
-    <div class="flex justify-center mb-8">
-      <button class="btn-secondary flex items-center">
-        Load More
-        <i class="fas fa-chevron-down ml-2"></i>
+    <div class="flex items-center">
+      <button id="brand-btn" class="ml-2 p-2 rounded-full hover:bg-gray-100">
+        <i class="fas fa-crown text-gray-600"></i>
+      </button>
+      <button id="sort-btn" class="ml-2 p-2 rounded-full hover:bg-gray-100">
+        <i class="fas fa-sort text-gray-600"></i>
       </button>
     </div>
+  </div>
 
-    <!-- Sort Modal (Bottom Sheet) - Hidden by default -->
-    <div id="sort-modal"
-      class="fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-lg transform translate-y-full transition-transform duration-300 ease-in-out z-50">
-      <div class="p-6">
-        <div class="flex justify-between items-center mb-4">
-          <h3 class="text-xl font-bold">Sort</h3>
-          <button id="close-sort-modal" class="text-gray-500">
-            <i class="fas fa-times"></i>
-          </button>
+  <!-- Categories Scrollable Tabs -->
+  <div class="mb-6" id="category-pill-container">
+    <div class="flex overflow-x-auto space-x-3 py-2 no-scrollbar">
+      <div class="category-pill active" id="All">All</div>
+      <div class="category-pill" id="Best Selling">Best Selling</div>
+      <div class="category-pill" id="Coffee">Coffee</div>
+      <div class="category-pill" id="Cold Drinks">Cold Drinks</div>
+      <div class="category-pill" id="Pastries">Pastries</div>
+      <div class="category-pill" id="Candy">Candy</div>
+      <div class="category-pill" id="Saudi Products">Saudi Products</div>
+      <div class="category-pill" id="Breakfast">Breakfast</div>
+      <div class="category-pill" id="Merchandise">Merchandise</div>
+    </div>
+  </div>
+  <style>
+    .show-filter-status {
+      background: var(--accent-beige);
+      color: var(--primary-green);
+      padding: 6px 12px;
+    }
+  </style>
+  <!-- Products Count and Active Filters -->
+  <!-- <div id="filter-status" class="flex items-center mb-4" style="column-gap: 12px;"> -->
+  <!-- <p class="text-sm text-gray-600">Showing 24 products</p> -->
+  <!-- <div class="flex items-center ">
+      <span class="text-sm text-accent" style="color: #4D5765; font-weight: 600;">Filter: </span>
+      <span class="text-sm ml-1 bg-primary text-white px-2 py-1 rounded-full flex items-center show-filter-status">
+        New Items
+        <i class="fas fa-times ml-1 text-xs"></i>
+      </span>
+    </div> -->
+  <!-- <div class="flex items-center ">
+      <span class="text-sm text-accent" style="color: #4D5765; font-weight: 600;">Brand: </span>
+      <span class="text-sm ml-1 bg-primary text-white px-2 py-1 rounded-full flex items-center show-filter-status">
+        Jexlyn
+        <i class="fas fa-times ml-1 text-xs"></i>
+      </span>
+    </div> -->
+  <!-- </div> -->
+
+  <!-- Product Grid -->
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 lg:gap-6 mb-8" id="product-skeleton-container">
+    <!-- Product Card 1 (reusing structure from your code) -->
+    <div class="product-card">
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1037&q=80" alt="Espresso" class="w-full h-48 object-cover">
+        <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
+          <i class="far fa-heart text-gray-600"></i>
+        </button>
+      </div>
+      <div class="p-4">
+        <div class="text-sm text-gray-500 mb-1">Coffee</div>
+        <h3 class="font-bold mb-1">Double Espresso</h3>
+        <div class="flex items-center mb-3">
+          <div class="flex text-accent">
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star-half-alt text-sm"></i>
+          </div>
+          <span class="text-sm text-gray-500 ml-1">(42)</span>
         </div>
-
-        <form id="sort-form">
-          <!-- Sort Option 1 -->
-          <div class="flex items-center py-3 border-b border-gray-100">
-            <input type="radio" id="new" name="sort" value="new" checked class="h-4 w-4 text-primary">
-            <label for="new" class="ml-3 text-gray-800">What's New</label>
-          </div>
-
-          <!-- Sort Option 2 -->
-          <div class="flex items-center py-3 border-b border-gray-100">
-            <input type="radio" id="price-high" name="sort" value="price-high" class="h-4 w-4 text-primary">
-            <label for="price-high" class="ml-3 text-gray-800">Price High to Low</label>
-          </div>
-
-          <!-- Sort Option 3 -->
-          <div class="flex items-center py-3 border-b border-gray-100">
-            <input type="radio" id="price-low" name="sort" value="price-low" class="h-4 w-4 text-primary">
-            <label for="price-low" class="ml-3 text-gray-800">Price Low to High</label>
-          </div>
-
-          <!-- Sort Option 4 -->
-          <div class="flex items-center py-3 border-b border-gray-100">
-            <input type="radio" id="name-az" name="sort" value="name-az" class="h-4 w-4 text-primary">
-            <label for="name-az" class="ml-3 text-gray-800">Name A to Z</label>
-          </div>
-
-          <!-- Sort Option 5 -->
-          <div class="flex items-center py-3 border-b border-gray-100">
-            <input type="radio" id="name-za" name="sort" value="name-za" class="h-4 w-4 text-primary">
-            <label for="name-za" class="ml-3 text-gray-800">Name Z to A</label>
-          </div>
-
-          <!-- Apply Button -->
-          <button type="submit" class="w-full mt-6 py-3 bg-red-600 text-white rounded-lg font-bold">Apply</button>
-        </form>
+        <div class="flex items-center justify-between">
+          <span class="font-bold">$3.50</span>
+          <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
+        </div>
       </div>
     </div>
 
-    <!-- Overlay for Modal Background - Hidden by default -->
-    <div id="modal-overlay"
-      class="fixed inset-0 bg-black opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out z-40">
+    <!-- Product Card 2 -->
+    <div class="product-card">
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1579888944880-d98341245702?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Croissant" class="w-full h-48 object-cover">
+        <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
+          <i class="far fa-heart text-gray-600"></i>
+        </button>
+      </div>
+      <div class="p-4">
+        <div class="text-sm text-gray-500 mb-1">Pastry</div>
+        <h3 class="font-bold mb-1">Butter Croissant</h3>
+        <div class="flex items-center mb-3">
+          <div class="flex text-accent">
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+          </div>
+          <span class="text-sm text-gray-500 ml-1">(87)</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="font-bold">$2.75</span>
+          <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
     </div>
-  </main>
 
+    <!-- Product Card 3 -->
+    <div class="product-card">
+      <div class="relative">
+        <div class="absolute top-0 left-0 bg-accent-gold text-white text-xs px-2 py-1 rounded-tr-md rounded-bl-md">
+          NEW
+        </div>
+        <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80" alt="Latte" class="w-full h-48 object-cover">
+        <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
+          <i class="far fa-heart text-gray-600"></i>
+        </button>
+      </div>
+      <div class="p-4">
+        <div class="text-sm text-gray-500 mb-1">Coffee</div>
+        <h3 class="font-bold mb-1">Vanilla Latte</h3>
+        <div class="flex items-center mb-3">
+          <div class="flex text-accent">
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="far fa-star text-sm"></i>
+          </div>
+          <span class="text-sm text-gray-500 ml-1">(36)</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="font-bold">$4.25</span>
+          <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Card 4 -->
+    <div class="product-card">
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Cold Brew" class="w-full h-48 object-cover">
+        <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
+          <i class="far fa-heart text-gray-600"></i>
+        </button>
+      </div>
+      <div class="p-4">
+        <div class="text-sm text-gray-500 mb-1">Cold Drinks</div>
+        <h3 class="font-bold mb-1">Cold Brew</h3>
+        <div class="flex items-center mb-3">
+          <div class="flex text-accent">
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star-half-alt text-sm"></i>
+          </div>
+          <span class="text-sm text-gray-500 ml-1">(64)</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="font-bold">$4.50</span>
+          <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Card 5 -->
+    <div class="product-card">
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Caramel Macchiato" class="w-full h-48 object-cover">
+        <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
+          <i class="far fa-heart text-gray-600"></i>
+        </button>
+      </div>
+      <div class="p-4">
+        <div class="text-sm text-gray-500 mb-1">Coffee</div>
+        <h3 class="font-bold mb-1">Caramel Macchiato</h3>
+        <div class="flex items-center mb-3">
+          <div class="flex text-accent">
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+          </div>
+          <span class="text-sm text-gray-500 ml-1">(91)</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="font-bold">$4.75</span>
+          <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Card 6 -->
+    <div class="product-card">
+      <div class="relative">
+        <div class="absolute top-0 left-0 bg-primary text-white text-xs px-2 py-1 rounded-tr-md rounded-bl-md">
+          BESTSELLER</div>
+        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Cappuccino" class="w-full h-48 object-cover">
+        <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
+          <i class="far fa-heart text-gray-600"></i>
+        </button>
+      </div>
+      <div class="p-4">
+        <div class="text-sm text-gray-500 mb-1">Coffee</div>
+        <h3 class="font-bold mb-1">Cappuccino</h3>
+        <div class="flex items-center mb-3">
+          <div class="flex text-accent">
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="far fa-star text-sm"></i>
+          </div>
+          <span class="text-sm text-gray-500 ml-1">(78)</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="font-bold">$4.25</span>
+          <button class="add-to-cart bg-primary text-white p-2 rounded-full"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load More Button -->
+  <div class="flex justify-center mb-8">
+    <button id="load_more_btn" class="btn-secondary flex items-center">
+      Load More
+      <i class="fas fa-chevron-down ml-2"></i>
+    </button>
+  </div>
+
+  <!-- Sort Modal (Bottom Sheet) - Hidden by default -->
+  <div id="sort-modal" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-lg transform translate-y-full transition-transform duration-300 ease-in-out z-50">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold">Sort</h3>
+        <button id="close-sort-modal" class="text-gray-500">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <form id="sort-form">
+        <!-- Sort Option 1 -->
+        <div class="flex items-center py-3 border-b border-gray-100">
+          <input type="radio" id="new" name="sort" value="new" checked class="h-4 w-4 text-primary">
+          <label for="new" class="ml-3 text-gray-800">What's New</label>
+        </div>
+
+        <!-- Sort Option 2 -->
+        <div class="flex items-center py-3 border-b border-gray-100">
+          <input type="radio" id="price-high" name="sort" value="price-high" class="h-4 w-4 text-primary">
+          <label for="price-high" class="ml-3 text-gray-800">Price High to Low</label>
+        </div>
+
+        <!-- Sort Option 3 -->
+        <div class="flex items-center py-3 border-b border-gray-100">
+          <input type="radio" id="price-low" name="sort" value="price-low" class="h-4 w-4 text-primary">
+          <label for="price-low" class="ml-3 text-gray-800">Price Low to High</label>
+        </div>
+
+        <!-- Sort Option 4 -->
+        <div class="flex items-center py-3 border-b border-gray-100">
+          <input type="radio" id="name-az" name="sort" value="name-az" class="h-4 w-4 text-primary">
+          <label for="name-az" class="ml-3 text-gray-800">Name A to Z</label>
+        </div>
+
+        <!-- Sort Option 5 -->
+        <div class="flex items-center py-3 border-b border-gray-100">
+          <input type="radio" id="name-za" name="sort" value="name-za" class="h-4 w-4 text-primary">
+          <label for="name-za" class="ml-3 text-gray-800">Name Z to A</label>
+        </div>
+
+        <!-- Apply Button -->
+        <button type="submit" class="w-full mt-6 py-3 bg-red-600 text-white rounded-lg font-bold">Apply</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Overlay for Modal Background - Hidden by default -->
+  <div id="modal-overlay" class="fixed inset-0 bg-black opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out z-40">
+  </div>
+</main>
+<script>
+  // Global options variable
+  let optionSelections = {
+    "brand": 'NOTHING',
+    "sort": 'NOTHING',
+    "search": 'NOTHING',
+    "category": 'All',
+    "page": 1,
+  };
+
+  function updateFilterStatus(optionSelections) {
+    const sortValue = optionSelections.sort;
+    const brandValue = optionSelections.brand;
+    const containerId = 'filter-status';
+    const insertAfterId = 'category-pill-container';
+
+    // 1. Remove existing filter-status if it exists
+    const existingContainer = document.getElementById(containerId);
+    if (existingContainer) {
+      existingContainer.remove();
+    }
+
+    // 2. If both sort and brand are NOTHING, we skip creating anything
+    if (sortValue === 'NOTHING' && brandValue === 'NOTHING') {
+      return;
+    }
+
+    // 3. Create new container
+    const newContainer = document.createElement('div');
+    newContainer.id = containerId;
+    newContainer.className = 'flex items-center mb-4';
+    newContainer.style.columnGap = '12px';
+
+    // 4. Create pill helper
+    function createPill(label, value) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flex items-center animate-fade-in';
+
+      const labelSpan = document.createElement('span');
+      labelSpan.className = 'text-sm text-accent';
+      labelSpan.style.color = '#4D5765';
+      labelSpan.style.fontWeight = '600';
+      labelSpan.textContent = `${label}: `;
+
+      const pillSpan = document.createElement('span');
+      pillSpan.className = 'text-sm ml-1 bg-primary text-white px-2 py-1 rounded-full flex items-center show-filter-status';
+      pillSpan.innerHTML = `${value} <i whichSort="${label}" class="fas fa-times ml-1 text-xs close-filter-option"></i>`;
+
+      wrapper.appendChild(labelSpan);
+      wrapper.appendChild(pillSpan);
+      return wrapper;
+    }
+
+    // 5. Add sort and brand pills if needed
+    if (sortValue !== 'NOTHING') {
+      newContainer.appendChild(createPill('Sorting', sortValue));
+    }
+
+    if (brandValue !== 'NOTHING') {
+      newContainer.appendChild(createPill('Brand', brandValue));
+    }
+
+    // 6. Insert after #category-pill-container
+    const insertAfter = document.getElementById(insertAfterId);
+    if (insertAfter && insertAfter.parentNode) {
+      insertAfter.parentNode.insertBefore(newContainer, insertAfter.nextSibling);
+    }
+  }
+
+  document.addEventListener('click', (event) => {
+    if (event.target.matches('.close-filter-option')) {
+      // alert('remove button clicked');
+
+      const filterTagElement = event.target.closest('[whichSort]');
+      const filterType = filterTagElement ? filterTagElement.getAttribute('whichSort') : null;
+
+      if (!filterType) {
+        console.log('No whichSort attribute found');
+        return;
+      }
+
+      // Update the selection state
+      switch (filterType) {
+        case 'Sorting':
+          optionSelections.sort = 'NOTHING';
+          break;
+        case 'Brand':
+          optionSelections.brand = 'NOTHING';
+          break;
+        default:
+          console.warn(`Unhandled filterType: ${filterType}`);
+          return;
+      }
+
+      const filterRowElement = filterTagElement.parentElement?.parentElement;
+      const filterGroupContainer = filterRowElement?.parentElement;
+
+      if (filterRowElement && filterGroupContainer) {
+        const siblings = Array.from(filterGroupContainer.children).filter(child => child !== filterRowElement);
+
+        const elementToRemove = (siblings.length === 0) ? filterGroupContainer : filterRowElement;
+
+        // Add fade-out class to trigger animation
+        elementToRemove.classList.add('fade-out');
+
+        // Remove after transition ends
+        elementToRemove.addEventListener('transitionend', () => {
+          elementToRemove.remove();
+        }, {
+          once: true
+        }); // `once` ensures the listener is removed automatically
+        getProducts(optionSelections);
+      } else {
+        console.warn('Expected DOM structure not found.');
+      }
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (event.target.matches('.category-pill')) {
+      const clickedPill = event.target;
+
+      // Step 1: Remove 'active' class from all category pills
+      document.querySelectorAll('.category-pill.active').forEach(pill => {
+        pill.classList.remove('active');
+      });
+
+      // Step 2: Add 'active' class to the clicked element
+      clickedPill.classList.add('active');
+
+      // Step 3: Update optionSelections.brand to the clicked element's id (custom or native)
+      optionSelections.category = clickedPill.id;
+      console.log('Selected brand:', optionSelections);
+      getProducts(optionSelections);
+    }
+
+
+  });
+
+
+
+
+  // Wait for DOM to load
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('product-search-input');
+
+    if (searchInput) {
+      // Listen for real-time typing
+      searchInput.addEventListener('input', () => {
+        const value = searchInput.value.trim();
+
+        // Set to 'NOTHING' if input is empty, otherwise use the input
+        optionSelections.search = value === '' ? 'NOTHING' : value;
+
+        console.log('Live search value:', optionSelections.search);
+      });
+
+      searchInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          getProducts(optionSelections);
+        }
+      });
+
+      document.getElementById('product-search-icon').addEventListener('click', function() {
+        getProducts(optionSelections);
+      });
+    } else {
+      console.warn('Search input not found!');
+    }
+  });
+
+  // 
+
+  function getProducts(filterObject) {
+    const container = document.getElementById('product-skeleton-container');
+    if (!container) {
+      console.warn('Product container not found');
+      return;
+    }
+
+    // Step 1: Remove existing product cards
+    const productCards = container.querySelectorAll('.product-card');
+    productCards.forEach(card => card.remove());
+
+    // Step 2: Show skeletons
+    const skeletonHTML = generateSkeletons(6);
+    container.insertAdjacentHTML('beforeend', skeletonHTML);
+
+    // Step 3: Track when skeletons were shown
+    const skeletonShownAt = Date.now();
+
+    // Step 4: Start fetch immediately
+    fetch('/get-products', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(filterObject)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        const elapsed = Date.now() - skeletonShownAt;
+        const remaining = 1500 - elapsed;
+        const wait = remaining > 0 ? remaining : 0;
+
+        setTimeout(() => {
+          // Step 5: Remove skeletons
+          const skeletons = container.querySelectorAll('.skeleton-card');
+          skeletons.forEach(s => s.remove());
+
+          // Step 6: Handle empty or valid data
+          if (!data || data.length === 0) {
+            const noResults = document.createElement('div');
+            noResults.className = 'text-center text-gray-500';
+            noResults.innerHTML = '<p style="text-align:center;margin:auto;width:100%">No products found</p>';
+            container.appendChild(noResults);
+            showToast('No products found');
+            setTimeout(() => location.reload(), 3000);
+          } else {
+            renderProducts(data);
+          }
+        }, wait);
+      })
+      .catch(error => {
+        const elapsed = Date.now() - skeletonShownAt;
+        const remaining = 1500 - elapsed;
+        const wait = remaining > 0 ? remaining : 0;
+
+        setTimeout(() => {
+          console.error('Failed to load products:', error);
+          showToast('An error occurred while loading products');
+
+          const skeletons = container.querySelectorAll('.skeleton-card');
+          skeletons.forEach(s => s.remove());
+
+          setTimeout(() => location.reload(), 3000);
+        }, wait);
+      });
+  }
+
+
+  function generateSkeletons(count = 6) {
+    let skeletons = '';
+    for (let i = 0; i < count; i++) {
+      skeletons += `
+      <div class="product-card skeleton-card animate-pulse bg-white rounded-lg overflow-hidden">
+        <div class="relative w-full h-48 bg-gray-200 skeleton-box"></div>
+        <div class="p-4">
+          <div class="h-3 bg-gray-200 rounded w-1/2 mb-2 skeleton-box"></div>
+          <div class="h-4 bg-gray-300 rounded w-3/4 mb-3 skeleton-box"></div>
+          <div class="flex items-center space-x-2 mb-3">
+            <div class="h-3 w-16 bg-gray-200 rounded skeleton-box"></div>
+            <div class="h-3 w-6 bg-gray-300 rounded skeleton-box"></div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="h-4 w-10 bg-gray-300 rounded skeleton-box"></div>
+            <div class="h-8 w-8 bg-gray-200 rounded-full skeleton-box"></div>
+          </div>
+        </div>
+      </div>
+    `;
+    }
+    return skeletons;
+  }
+
+  function renderProducts(products) {
+    const container = document.getElementById('product-skeleton-container');
+    if (!container) {
+      console.warn('Product container not found');
+      return;
+    }
+
+    // 1. Clear existing content
+    container.innerHTML = '';
+
+    // 2. Render each product
+    products.forEach(product => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+
+      // Generate star rating HTML
+      const stars = Array.from({
+        length: 5
+      }, (_, i) => {
+        if (i < product.review) {
+          return '<i class="fas fa-star text-sm text-accent"></i>';
+        } else {
+          return '<i class="far fa-star text-sm text-accent"></i>';
+        }
+      }).join('');
+
+      // Liked heart icon
+      const heartClass = product.liked ? 'fas fa-heart text-red-500' : 'far fa-heart text-gray-600';
+
+      // Product card inner HTML
+      card.innerHTML = `
+      <div class="relative">
+        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+        <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
+          <i class="${heartClass}"></i>
+        </button>
+      </div>
+      <div class="p-4">
+        <div class="text-sm text-gray-500 mb-1">${product.category}</div>
+        <h3 class="font-bold mb-1">${product.name}</h3>
+        <div class="flex items-center mb-3">
+          <div class="flex">${stars}</div>
+          <span class="text-sm text-gray-500 ml-1">(${product.review_count})</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="font-bold">$${product.price.toFixed(2)}</span>
+          <button class="add-to-cart bg-primary text-white p-2 rounded-full">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+      </div>
+    `;
+
+      container.appendChild(card);
+    });
+  }
+</script>
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+    const loadMoreBtn = document.getElementById('load_more_btn');
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', function () {
+        optionSelections.page=optionSelections.page+1
+        loadMoreProducts(optionSelections);
+      });
+    }
+  });
+
+function loadMoreProducts(filterObject) {
+  const container = document.getElementById('product-skeleton-container');
+  if (!container) {
+    console.warn('Product container not found');
+    return;
+  }
+
+  // Step 1: Get the last product card before loading
+  const productCards = container.querySelectorAll('.product-card');
+  const lastVisibleProduct = productCards[productCards.length - 1];
+
+  // Step 2: Hide existing product cards (but keep them in DOM)
+  productCards.forEach(card => card.classList.add('hide'));
+
+  // Step 3: Show skeletons
+  const skeletonHTML = generateSkeletons(6);
+  container.insertAdjacentHTML('beforeend', skeletonHTML);
+
+  const skeletonShownAt = Date.now();
+
+  // Step 4: Fetch more products
+  fetch('/get-products', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(filterObject)
+  })
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.json();
+    })
+    .then(data => {
+      const elapsed = Date.now() - skeletonShownAt;
+      const wait = elapsed < 1000 ? 1000 - elapsed : 0;
+
+      setTimeout(() => {
+        // Step 5: Remove skeletons
+        const skeletons = container.querySelectorAll('.skeleton-card');
+        skeletons.forEach(s => s.remove());
+
+        // Step 6: Show previous products
+        productCards.forEach(card => card.classList.remove('hide'));
+
+        // Step 7: Render new products
+        renderProducts(data, { append: true }); // ✅ Assuming renderProducts supports append
+
+        // Step 8: Smooth scroll to the last product that was visible
+        if (lastVisibleProduct) {
+          lastVisibleProduct.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+      }, wait);
+    })
+    .catch(error => {
+      console.error('Failed to load products:', error);
+      showToast('An error occurred while loading more products');
+      const skeletons = container.querySelectorAll('.skeleton-card');
+      skeletons.forEach(s => s.remove());
+    });
+}
+
+function renderProducts(products, options = {}) {
+  const container = document.getElementById('product-skeleton-container');
+  if (!container) {
+    console.warn('Product container not found');
+    return;
+  }
+
+  // Step 1: If not appending, clear existing products
+  if (!options.append) {
+    container.innerHTML = '';
+  }
+
+  // Step 2: Create product HTML
+  products.forEach(product => {
+    const productHTML = `
+      <div class="product-card">
+        <div class="relative">
+          <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+          <button class="wishlist-btn absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
+            <i class="${product.liked ? 'fas' : 'far'} fa-heart text-gray-600"></i>
+          </button>
+        </div>
+        <div class="p-4">
+          <div class="text-sm text-gray-500 mb-1">${product.description}</div>
+          <h3 class="font-bold mb-1">${product.name}</h3>
+          <div class="flex items-center mb-3">
+            <div class="flex text-accent">
+              ${generateStars(product.review)}
+            </div>
+            <span class="text-sm text-gray-500 ml-1">(${product.review_count})</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="font-bold">$${product.price.toFixed(2)}</span>
+            <button class="add-to-cart bg-primary text-white p-2 rounded-full">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.insertAdjacentHTML('beforeend', productHTML);
+  });
+}
+
+function generateStars(rating) {
+  let stars = '';
+  for (let i = 1; i <= 5; i++) {
+    if (i <= rating) {
+      stars += '<i class="fas fa-star text-sm"></i>';
+    } else if (i - 0.5 <= rating) {
+      stars += '<i class="fas fa-star-half-alt text-sm"></i>';
+    } else {
+      stars += '<i class="far fa-star text-sm"></i>';
+    }
+  }
+  return stars;
+}
+
+</script>
+  <!-- Brand Modal -->
+  <style>
+    /* Brand Modal Styles */
+    .brand-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: flex-end;
+      align-items: flex-end;
+      z-index: 1000;
+    }
+
+    .brand-content {
+      background-color: white;
+      border-radius: 20px 20px 0 0;
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      padding: 20px;
+      animation: slideUp 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 15px;
+      color: black;
+    }
+
+    .brand-options {
+      overflow-y: auto;
+      padding: 10px 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .brand-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .brand-option:hover {
+      background-color: #f8f8f8;
+    }
+
+    .brand-option.selected {
+      border-color: #003F2E;
+      background-color: #f2fef7;
+    }
+
+    .brand-image {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 8px;
+      border-radius: 50%;
+      background-color: #f5f5f5;
+      padding: 8px;
+    }
+
+    .brand-name {
+      font-size: 14px;
+      text-align: center;
+      color: #333;
+    }
+
+    .close-brand {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .brand-apply-btn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      background-color: var(--primary-green);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .brand-apply-btn:hover {
+      background-color: #dc2626;
+    }
+
+    .brand-search {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .brand-search:focus {
+      outline: none;
+      border-color: var(--primary-green);
+    }
+
+    /* Desktop Styles */
+    @media (min-width: 768px) {
+      .brand-content {
+        width: 450px;
+        max-width: 90%;
+        border-radius: 20px;
+        margin: 40px;
+        height: auto;
+        max-height: 80vh;
+      }
+
+      .brand-options {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+
+  <!-- Brand Modal (Bottom Sheet) - Hidden by default -->
+  <div class="brand-modal">
+    <div class="brand-content">
+      <div class="brand-header">
+        <h2 class="text-xl font-bold">Filter by Brand</h2>
+        <button id="close-brand" class="close-brand">
+          <i class="mdi mdi-close text-xl"></i>
+        </button>
+      </div>
+
+      <input type="text" class="brand-search" placeholder="Search brands..." id="brand-search">
+
+      <div class="brand-options" id="brand-options">
+        <!-- Brand options will be populated by JavaScript -->
+      </div>
+
+      <button class="brand-apply-btn" id="apply-brand">Apply Filter</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get DOM elements
+      const brandBtn = document.getElementById('brand-btn');
+      const brandModal = document.querySelector('.brand-modal');
+      const closeBrandBtn = document.getElementById('close-brand');
+      const brandOptionsContainer = document.getElementById('brand-options');
+      const applyBrandBtn = document.getElementById('apply-brand');
+      const brandSearch = document.getElementById('brand-search');
+
+      // Sample brand data (replace with your actual brands)
+      const brands = [
+        { id: 1, name: 'Nike', image: 'https://logo.clearbit.com/nike.com' },
+        { id: 2, name: 'Adidas', image: 'https://logo.clearbit.com/adidas.com' },
+        { id: 3, name: 'Apple', image: 'https://logo.clearbit.com/apple.com' },
+        { id: 4, name: 'Samsung', image: 'https://logo.clearbit.com/samsung.com' },
+        { id: 5, name: 'Sony', image: 'https://logo.clearbit.com/sony.com' },
+        { id: 6, name: 'LG', image: 'https://logo.clearbit.com/lg.com' },
+        { id: 7, name: 'Microsoft', image: 'https://logo.clearbit.com/microsoft.com' },
+        { id: 8, name: 'Google', image: 'https://logo.clearbit.com/google.com' },
+        { id: 9, name: 'Amazon', image: 'https://logo.clearbit.com/amazon.com' },
+        { id: 10, name: 'Dell', image: 'https://logo.clearbit.com/dell.com' },
+        { id: 11, name: 'HP', image: 'https://logo.clearbit.com/hp.com' },
+        { id: 12, name: 'Lenovo', image: 'https://logo.clearbit.com/lenovo.com' }
+      ];
+
+      let selectedBrand = null;
+
+      // Function to open brand modal
+      function openBrandModal() {
+        brandModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        renderBrands(brands);
+      }
+
+      // Function to close brand modal
+      function closeBrandModal() {
+        brandModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+
+      // Render brands in the modal
+      function renderBrands(brandsToRender) {
+        brandOptionsContainer.innerHTML = '';
+
+        brandsToRender.forEach(brand => {
+          const brandElement = document.createElement('div');
+          brandElement.className = `brand-option ${selectedBrand === brand.id ? 'selected' : ''}`;
+          brandElement.innerHTML = `
+                    <img src="${brand.image}" alt="${brand.name}" class="brand-image" onerror="this.src='https://via.placeholder.com/60?text=${brand.name}'">
+                    <span class="brand-name">${brand.name}</span>
+                `;
+
+          brandElement.addEventListener('click', () => {
+            // Toggle selection
+            if (selectedBrand === brand.id) {
+              selectedBrand = null;
+              brandElement.classList.remove('selected');
+            } else {
+              // Remove selection from all brands first
+              document.querySelectorAll('.brand-option').forEach(el => {
+                el.classList.remove('selected');
+              });
+
+              selectedBrand = brand.id;
+              brandElement.classList.add('selected');
+            }
+          });
+
+          brandOptionsContainer.appendChild(brandElement);
+        });
+      }
+
+      // Filter brands based on search input
+      brandSearch.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filteredBrands = brands.filter(brand =>
+          brand.name.toLowerCase().includes(searchTerm)
+        );
+        renderBrands(filteredBrands);
+      });
+
+      // Event listeners
+      if (brandBtn) {
+        brandBtn.addEventListener('click', openBrandModal);
+      }
+
+      if (closeBrandBtn) {
+        closeBrandBtn.addEventListener('click', closeBrandModal);
+      }
+
+      // Apply brand filter
+      applyBrandBtn.addEventListener('click', () => {
+        if (selectedBrand) {
+          const selectedBrandObj = brands.find(b => b.id === selectedBrand);
+          console.log('Selected brand:', selectedBrandObj.name);
+          
+          // Update the optionSelections object
+          optionSelections.brand = selectedBrandObj.name;
+          optionSelections.page = 1; // Reset to first page when changing filters
+          updateFilterStatus(optionSelections)
+          // Here you would filter your products by the selected brand
+          // filterProductsByBrand(selectedBrand);
+        } else {
+          console.log('No brand selected - showing all products');
+          
+          // Reset brand selection in the object
+          optionSelections.brand = 'NOTHING';
+          optionSelections.page = 1; // Reset to first page when changing filters
+          
+          // Here you would show all products (remove brand filter)
+          // resetBrandFilter();
+        }
+        
+        // Log the updated selections object
+        console.log('Current selections:', optionSelections);
+        
+        closeBrandModal();
+        getProducts(optionSelections);
+      });
+
+      // Close modal when pressing Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && brandModal.style.display === 'flex') {
+          closeBrandModal();
+        }
+      });
+    });
+
+    // Example brand filtering function (you would implement this based on your needs)
+    function filterProductsByBrand(brandId) {
+      // This is just a placeholder - implement your actual filtering logic
+      console.log(`Filtering products by brand ID: ${brandId}`);
+      // After filtering, you would typically update the product display
+      // updateProductDisplay();
+    }
+  </script>
+
+ <!-- Sort Modal Styles -->
   <style>
     /* Sort Modal Styles */
     .sort-modal {
@@ -838,482 +1607,156 @@
     }
   </style>
   <!-- Sort Modal (Bottom Sheet) - Hidden by default -->
-  <div class="sort-modal">
-    <div class="sort-content">
-      <div class="sort-header">
-        <h2 class="text-xl font-bold">Sort</h2>
-        <button id="close-sort" class="close-sort">
-          <i class="mdi mdi-close text-xl"></i>
-        </button>
-      </div>
+<div class="sort-modal">
+  <div class="sort-content">
+    <div class="sort-header">
+      <h2 class="text-xl font-bold">Sort</h2>
+      <button id="close-sort" class="close-sort">
+        <i class="mdi mdi-close text-xl"></i>
+      </button>
+    </div>
 
-      <div class="sort-options">
-        <form id="sort-form">
-          <!-- Sort Option 1 -->
-          <div class="flex items-center py-3 border-b border-gray-100">
-            <input type="radio" id="new" name="sort" value="new" checked class="h-4 w-4 text-primary">
-            <label for="new" class="ml-3 text-gray-800">What's New</label>
-          </div>
+    <div class="sort-options">
+      <form id="sort-form" method="post">
+        <!-- Sort Option 1 -->
+        <div class="flex items-center py-3 border-b border-gray-100">
+          <input type="radio" id="new" name="sort" value="new" class="h-4 w-4 text-primary">
+          <label for="new" class="ml-3 text-gray-800">What's New</label>
+        </div>
 
-          <!-- Sort Option 2 -->
-          <div class="flex items-center py-3 border-b border-gray-100">
-            <input type="radio" id="price-high" name="sort" value="price-high" class="h-4 w-4 text-primary">
-            <label for="price-high" class="ml-3 text-gray-800">Price High to Low</label>
-          </div>
+        <!-- Sort Option 2 -->
+        <div class="flex items-center py-3 border-b border-gray-100">
+          <input type="radio" id="price-high" name="sort" value="price-high" class="h-4 w-4 text-primary">
+          <label for="price-high" class="ml-3 text-gray-800">Price High to Low</label>
+        </div>
 
-          <!-- Sort Option 3 -->
-          <div class="flex items-center py-3 border-b border-gray-100">
-            <input type="radio" id="price-low" name="sort" value="price-low" class="h-4 w-4 text-primary">
-            <label for="price-low" class="ml-3 text-gray-800">Price Low to High</label>
-          </div>
+        <!-- Sort Option 3 -->
+        <div class="flex items-center py-3 border-b border-gray-100">
+          <input type="radio" id="price-low" name="sort" value="price-low" class="h-4 w-4 text-primary">
+          <label for="price-low" class="ml-3 text-gray-800">Price Low to High</label>
+        </div>
 
-          <!-- Sort Option 4 -->
-          <div class="flex items-center py-3 border-b border-gray-100">
-            <input type="radio" id="name-az" name="sort" value="name-az" class="h-4 w-4 text-primary">
-            <label for="name-az" class="ml-3 text-gray-800">Name A to Z</label>
-          </div>
+        <!-- Sort Option 4 -->
+        <div class="flex items-center py-3 border-b border-gray-100">
+          <input type="radio" id="name-az" name="sort" value="name-az" class="h-4 w-4 text-primary">
+          <label for="name-az" class="ml-3 text-gray-800">Name A to Z</label>
+        </div>
 
-          <!-- Sort Option 5 -->
-          <div class="flex items-center py-3 border-b border-gray-100">
-            <input type="radio" id="name-za" name="sort" value="name-za" class="h-4 w-4 text-primary">
-            <label for="name-za" class="ml-3 text-gray-800">Name Z to A</label>
-          </div>
+        <!-- Sort Option 5 -->
+        <div class="flex items-center py-3 border-b border-gray-100">
+          <input type="radio" id="name-za" name="sort" value="name-za" class="h-4 w-4 text-primary">
+          <label for="name-za" class="ml-3 text-gray-800">Name Z to A</label>
+        </div>
 
-          <!-- Apply Button -->
-          <button type="submit" class="w-full mt-6 py-3 text-white rounded-lg font-bold" style="background-color: var(--primary-green);">Apply</button>
-        </form>
-      </div>
+        <!-- Apply Button -->
+        <button type="button" id="apply-sort" class="w-full mt-6 py-3 text-white rounded-lg font-bold"
+          style="background-color: var(--primary-green);">Apply</button>
+      </form>
     </div>
   </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Get DOM elements
-      const sortBtn = document.getElementById('sort-btn');
-      const sortModal = document.querySelector('.sort-modal');
-      const closeSortBtn = document.getElementById('close-sort');
-      const modalOverlay = document.getElementById('modal-overlay');
-      const sortForm = document.getElementById('sort-form');
-
-      // Function to open sort modal
-      function openSortModal() {
-        sortModal.style.display = 'flex';
-        if (modalOverlay) {
-          modalOverlay.style.opacity = '0.5';
-          modalOverlay.style.pointerEvents = 'auto';
-        }
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-      }
-
-      // Function to close sort modal
-      function closeSortModal() {
-        sortModal.style.display = 'none';
-        if (modalOverlay) {
-          modalOverlay.style.opacity = '0';
-          modalOverlay.style.pointerEvents = 'none';
-        }
-        document.body.style.overflow = ''; // Re-enable scrolling
-      }
-
-      // Event listeners
-      if (sortBtn) {
-        sortBtn.addEventListener('click', openSortModal);
-      }
-
-      if (closeSortBtn) {
-        closeSortBtn.addEventListener('click', closeSortModal);
-      }
-
-      if (modalOverlay) {
-        modalOverlay.addEventListener('click', closeSortModal);
-      }
-
-      // Handle form submission
-      if (sortForm) {
-        sortForm.addEventListener('submit', function (e) {
-          e.preventDefault();
-
-          // Get the selected sort option
-          const selectedSort = document.querySelector('input[name="sort"]:checked').value;
-
-          // Here you would implement your actual sorting logic
-          // For now, we'll just log it and close the modal
-          console.log('Selected sort option:', selectedSort);
-
-          // Apply your sorting logic here based on the selected option
-          // For example: sortProducts(selectedSort);
-
-          closeSortModal();
-
-          // Optional: Show a message or update UI to reflect the current sort
-          // updateSortIndicator(selectedSort);
-        });
-      }
-
-      // Close modal when pressing Escape key
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && sortModal.style.display === 'flex') {
-          closeSortModal();
-        }
-      });
-    });
-
-    // Example sorting function (you would implement this based on your needs)
-    function sortProducts(sortBy) {
-      // This is just a placeholder - implement your actual sorting logic
-      switch (sortBy) {
-        case 'new':
-          // Sort by newest
-          break;
-        case 'price-high':
-          // Sort by price high to low
-          break;
-        case 'price-low':
-          // Sort by price low to high
-          break;
-        case 'name-az':
-          // Sort by name A-Z
-          break;
-        case 'name-za':
-          // Sort by name Z-A
-          break;
-        default:
-        // Default sorting
-      }
-
-      // After sorting, you would typically update the product display
-      // updateProductDisplay();
-    }
-  </script>
-
-  <style>
-    /* Brand Modal Styles */
-    .brand-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: none;
-        justify-content: flex-end;
-        align-items: flex-end;
-        z-index: 1000;
-    }
-
-    .brand-content {
-        background-color: white;
-        border-radius: 20px 20px 0 0;
-        width: 100%;
-        height: auto;
-        max-height: 80vh;
-        padding: 20px;
-        animation: slideUp 0.3s ease;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .brand-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 15px;
-        color: black;
-    }
-
-    .brand-options {
-        overflow-y: auto;
-        padding: 10px 0;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .brand-option {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 12px;
-        border-radius: 8px;
-        border: 2px solid transparent;
-        transition: all 0.2s ease;
-        cursor: pointer;
-    }
-
-    .brand-option:hover {
-        background-color: #f8f8f8;
-    }
-
-    .brand-option.selected {
-        border-color: #003F2E;
-        background-color: #f2fef7;
-    }
-
-    .brand-image {
-        width: 60px;
-        height: 60px;
-        object-fit: contain;
-        margin-bottom: 8px;
-        border-radius: 50%;
-        background-color: #f5f5f5;
-        padding: 8px;
-    }
-
-    .brand-name {
-        font-size: 14px;
-        text-align: center;
-        color: #333;
-    }
-
-    .close-brand {
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: #333;
-    }
-
-    .brand-apply-btn {
-        width: 100%;
-        margin-top: 20px;
-        padding: 14px;
-        background-color: var(--primary-green);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-weight: bold;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-
-    .brand-apply-btn:hover {
-        background-color: #dc2626;
-    }
-
-    .brand-search {
-        width: 100%;
-        padding: 12px 16px;
-        border: 1px solid #e5e7eb;
-        border-radius: 8px;
-        margin-bottom: 16px;
-        font-size: 14px;
-    }
-
-    .brand-search:focus {
-        outline: none;
-        border-color: var(--primary-green);
-    }
-
-    /* Desktop Styles */
-    @media (min-width: 768px) {
-        .brand-content {
-            width: 450px;
-            max-width: 90%;
-            border-radius: 20px;
-            margin: 40px;
-            height: auto;
-            max-height: 80vh;
-        }
-
-        .brand-options {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-</style>
-
-<!-- Brand Modal (Bottom Sheet) - Hidden by default -->
-<div class="brand-modal">
-    <div class="brand-content">
-        <div class="brand-header">
-            <h2 class="text-xl font-bold">Filter by Brand</h2>
-            <button id="close-brand" class="close-brand">
-                <i class="mdi mdi-close text-xl"></i>
-            </button>
-        </div>
-
-        <input type="text" class="brand-search" placeholder="Search brands..." id="brand-search">
-
-        <div class="brand-options" id="brand-options">
-            <!-- Brand options will be populated by JavaScript -->
-        </div>
-
-        <button class="brand-apply-btn" id="apply-brand">Apply Filter</button>
-    </div>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get DOM elements
-        const brandBtn = document.getElementById('brand-btn');
-        const brandModal = document.querySelector('.brand-modal');
-        const closeBrandBtn = document.getElementById('close-brand');
-        const brandOptionsContainer = document.getElementById('brand-options');
-        const applyBrandBtn = document.getElementById('apply-brand');
-        const brandSearch = document.getElementById('brand-search');
-        
-        // Sample brand data (replace with your actual brands)
-        const brands = [
-            { id: 1, name: 'Nike', image: 'https://logo.clearbit.com/nike.com' },
-            { id: 2, name: 'Adidas', image: 'https://logo.clearbit.com/adidas.com' },
-            { id: 3, name: 'Apple', image: 'https://logo.clearbit.com/apple.com' },
-            { id: 4, name: 'Samsung', image: 'https://logo.clearbit.com/samsung.com' },
-            { id: 5, name: 'Sony', image: 'https://logo.clearbit.com/sony.com' },
-            { id: 6, name: 'LG', image: 'https://logo.clearbit.com/lg.com' },
-            { id: 7, name: 'Microsoft', image: 'https://logo.clearbit.com/microsoft.com' },
-            { id: 8, name: 'Google', image: 'https://logo.clearbit.com/google.com' },
-            { id: 9, name: 'Amazon', image: 'https://logo.clearbit.com/amazon.com' },
-            { id: 10, name: 'Dell', image: 'https://logo.clearbit.com/dell.com' },
-            { id: 11, name: 'HP', image: 'https://logo.clearbit.com/hp.com' },
-            { id: 12, name: 'Lenovo', image: 'https://logo.clearbit.com/lenovo.com' }
-        ];
+  
+  let selectedSortValue = optionSelections.sort; // Track the selected sort value
 
-        let selectedBrand = null;
+  // Get DOM elements
+  const sortBtn = document.getElementById('sort-btn');
+  const sortModal = document.querySelector('.sort-modal');
+  const closeSortBtn = document.getElementById('close-sort');
+  const modalOverlay = document.getElementById('modal-overlay');
+  const applySortBtn = document.getElementById('apply-sort');
+  const sortForm = document.getElementById('sort-form');
 
-        // Function to open brand modal
-        function openBrandModal() {
-            brandModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            renderBrands(brands);
-        }
+  // Function to open sort modal
+  function openSortModal() {
+    console.log('Opening modal, current sort:', optionSelections.sort);
+    sortModal.style.display = 'flex';
 
-        // Function to close brand modal
-        function closeBrandModal() {
-            brandModal.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-        // Render brands in the modal
-        function renderBrands(brandsToRender) {
-            brandOptionsContainer.innerHTML = '';
-            
-            brandsToRender.forEach(brand => {
-                const brandElement = document.createElement('div');
-                brandElement.className = `brand-option ${selectedBrand === brand.id ? 'selected' : ''}`;
-                brandElement.innerHTML = `
-                    <img src="${brand.image}" alt="${brand.name}" class="brand-image" onerror="this.src='https://via.placeholder.com/60?text=${brand.name}'">
-                    <span class="brand-name">${brand.name}</span>
-                `;
-                
-                brandElement.addEventListener('click', () => {
-                    // Toggle selection
-                    if (selectedBrand === brand.id) {
-                        selectedBrand = null;
-                        brandElement.classList.remove('selected');
-                    } else {
-                        // Remove selection from all brands first
-                        document.querySelectorAll('.brand-option').forEach(el => {
-                            el.classList.remove('selected');
-                        });
-                        
-                        selectedBrand = brand.id;
-                        brandElement.classList.add('selected');
-                    }
-                });
-                
-                brandOptionsContainer.appendChild(brandElement);
-            });
-        }
-
-        // Filter brands based on search input
-        brandSearch.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filteredBrands = brands.filter(brand => 
-                brand.name.toLowerCase().includes(searchTerm)
-            );
-            renderBrands(filteredBrands);
-        });
-
-        // Event listeners
-        if (brandBtn) {
-            brandBtn.addEventListener('click', openBrandModal);
-        }
-
-        if (closeBrandBtn) {
-            closeBrandBtn.addEventListener('click', closeBrandModal);
-        }
-
-        // Apply brand filter
-        applyBrandBtn.addEventListener('click', () => {
-            if (selectedBrand) {
-                const selectedBrandObj = brands.find(b => b.id === selectedBrand);
-                console.log('Selected brand:', selectedBrandObj.name);
-                // Here you would filter your products by the selected brand
-                // filterProductsByBrand(selectedBrand);
-            } else {
-                console.log('No brand selected - showing all products');
-                // Here you would show all products (remove brand filter)
-                // resetBrandFilter();
-            }
-            closeBrandModal();
-        });
-
-        // Close modal when pressing Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && brandModal.style.display === 'flex') {
-                closeBrandModal();
-            }
-        });
-    });
-
-    // Example brand filtering function (you would implement this based on your needs)
-    function filterProductsByBrand(brandId) {
-        // This is just a placeholder - implement your actual filtering logic
-        console.log(`Filtering products by brand ID: ${brandId}`);
-        // After filtering, you would typically update the product display
-        // updateProductDisplay();
+    if (modalOverlay) {
+      modalOverlay.style.opacity = '0.5';
+      modalOverlay.style.pointerEvents = 'auto';
     }
-</script>
 
-<!-- JavaScript for Modal Functionality -->
-<script>
-  // Wait for DOM to load
-  document.addEventListener('DOMContentLoaded', function() {
-    const filterBtn = document.getElementById('filter-btn');
-    const sortModal = document.getElementById('sort-modal');
-    const closeModal = document.getElementById('close-sort-modal');
-    const modalOverlay = document.getElementById('modal-overlay');
-    
-    // Open modal when filter button is clicked
-    filterBtn.addEventListener('click', function() {
-      sortModal.classList.remove('transform', 'translate-y-full');
-      modalOverlay.classList.remove('opacity-0', 'pointer-events-none');
-      modalOverlay.classList.add('opacity-50');
-    });
-    
-    // Close modal when close button or overlay is clicked
-    function closeModalFunc() {
-      sortModal.classList.add('transform', 'translate-y-full');
-      modalOverlay.classList.add('opacity-0', 'pointer-events-none');
-      modalOverlay.classList.remove('opacity-50');
-    }
-    
-    closeModal.addEventListener('click', closeModalFunc);
-    modalOverlay.addEventListener('click', closeModalFunc);
-    
-    // Handle form submission (prevent default and close modal)
-    document.getElementById('sort-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      closeModalFunc();
-      // You would typically apply the sorting here
-      
-      // Show toast notification
-      showToast('Sorting applied');
-    });
-    
-    // Handle category selection
-    const categoryPills = document.querySelectorAll('.category-pill');
-    categoryPills.forEach(pill => {
-      pill.addEventListener('click', function() {
-        // Remove active class from all pills
-        categoryPills.forEach(p => p.classList.remove('active'));
-        // Add active class to clicked pill
-        this.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Pre-select current sort option
+    const currentSort = optionSelections.sort;
+    const sortInput = document.querySelector(`input[name="sort"][value="${currentSort}"]`);
+    if (sortInput) {
+      sortInput.checked = true;
+      selectedSortValue = currentSort;
+    } else {
+      document.querySelectorAll('input[name="sort"]').forEach(input => {
+        input.checked = false;
       });
+      selectedSortValue = 'NOTHING';
+    }
+  }
+
+  // Function to close sort modal
+  function closeSortModal() {
+    sortModal.style.display = 'none';
+    if (modalOverlay) {
+      modalOverlay.style.opacity = '0';
+      modalOverlay.style.pointerEvents = 'none';
+    }
+    document.body.style.overflow = '';
+  }
+
+  // Update selectedSortValue on change of any sort input
+  document.querySelectorAll('input[name="sort"]').forEach(input => {
+    input.addEventListener('change', function () {
+      selectedSortValue = this.value;
+      console.log('Sort option selected:', selectedSortValue);
     });
   });
-</script>
 
+  // Apply button click handler
+  applySortBtn?.addEventListener('click', function () {
+    console.log('Applying sort:', selectedSortValue);
+
+    optionSelections.sort = selectedSortValue || 'NOTHING';
+    optionSelections.page = 1;
+
+    console.log('Updated options:', optionSelections);
+    // alert('Current sort value: ' + optionSelections.sort);
+    updateFilterStatus(optionSelections)
+    closeSortModal();
+    getProducts(optionSelections);
+    sortProducts(optionSelections.sort);
+  });
+
+  // Prevent form submission
+  sortForm?.addEventListener('submit', function (e) {
+    e.preventDefault();
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && sortModal.style.display === 'flex') {
+      closeSortModal();
+    }
+  });
+
+  // Dummy sorting function for now
+  function sortProducts(sortBy) {
+    console.log('Executing sort with:', sortBy);
+    console.log('Current optionSelections:', optionSelections);
+
+    // Example delay to show sort value remains
+    setTimeout(() => {
+      console.log('Value after 1 second:', optionSelections.sort);
+    }, 1000);
+
+    // You can place actual sorting or fetch logic here
+  }
+
+  // Event listeners
+  sortBtn?.addEventListener('click', openSortModal);
+  closeSortBtn?.addEventListener('click', closeSortModal);
+  modalOverlay?.addEventListener('click', closeSortModal);
+</script>
 
   <!-- Bottom Navigation (Mobile) -->
   <nav class="bottom-nav fixed bottom-0 left-0 w-full flex justify-around items-center lg:hidden">
@@ -1344,7 +1787,8 @@
   </nav>
 
 
-    <style>
+
+  <style>
      /* Hamburger Menu */
         .hamburger-menu {
             position: fixed;
@@ -1474,7 +1918,7 @@
             document.getElementById('menu-overlay').classList.remove('active');
         });
     </script>
-  <style>
+<style>
       /* Profile Dashboard */
         .profile-dashboard {
             position: fixed;
@@ -1589,7 +2033,7 @@
     </script>
 <!-- !!!!! PLEASE NOTE -->
  <!-- Css styles are in CartSlider partial file -->
-<head>
+ <head>
     <!-- Material Icons -->
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css" rel="stylesheet" />
 </head>
@@ -1712,7 +2156,8 @@
      * In a real app, this would be an actual API call
      * @returns {Promise} Promise that resolves to wishlist items
      */
-    async function fetchWishlistItems() {
+    
+async function fetchWishlistItems() {
     try {
         // Start both the fetch and a 1.5-second delay
         const [items] = await Promise.all([
@@ -1736,7 +2181,6 @@
         throw new Error("Failed to fetch wishlist items"); // Re-throw with a clean message
     }
 }
-
     /**
      * Renders wishlist items in the wishlist container
      */
@@ -1867,7 +2311,7 @@
     //     document.querySelector(".wishlist-footer").remove();
     // }
 </script>
-<style>
+ <style>
     /* Modal Styles */
     .modal {
         position: fixed;
@@ -2178,6 +2622,7 @@
             </div>`;
     }
 
+    
     async function fetchCartItems() {
     try {
         const [items] = await Promise.all([
@@ -2256,7 +2701,7 @@
 
         cartItemsContainer.innerHTML = cartHTML;
 
-        // Optional: add remove & quantity logic here
+        
     }
 </script>
 
@@ -2288,41 +2733,7 @@
       });
     });
 
-    // document.querySelectorAll('.wishlist-btn').forEach(button => {
-    //   button.addEventListener('click', () => {
-    //     const wishlistCount = document.getElementById('wishlist-count');
-    //     let count = parseInt(wishlistCount.textContent) || 0;
-    //     count++;
-    //     wishlistCount.textContent = count;
-    //     animateCartBadge();
-    //     showToast('Item added to wishlist!');
-    //   });
-    // });
-    // document.querySelectorAll('.wishlist-btn').forEach(button => {
-    //   button.addEventListener('click', () => {
-    //     const wishlistCount = document.getElementById('wishlist-count');
-    //     let count = parseInt(wishlistCount.textContent) || 0;
-
-    //     if (button.getAttribute('data-wishlisted') === 'yes') {
-    //       // Item is already wishlisted - remove it
-    //       button.removeAttribute('data-wishlisted');
-    //       count = Math.max(0, count - 1); // Ensure count doesn't go negative
-    //       showToast('Item removed from wishlist!');
-    //     } else {
-    //       // Item is not wishlisted - add it
-    //       button.setAttribute('data-wishlisted', 'yes');
-    //       count++;
-    //       showToast('Item added to wishlist!');
-    //     }
-
-    //     wishlistCount.textContent = count;
-    //     animateCartBadge();
-
-    //     // Optional: Toggle button appearance
-    //     button.classList.toggle('active', button.hasAttribute('data-wishlisted'));
-    //   });
-    // });
-
+   
     document.querySelectorAll('.wishlist-btn').forEach(button => {
   // Set default heart icon (regular)
   button.innerHTML = '<i class="far fa-heart text-gray-600"></i>';
@@ -2356,3 +2767,7 @@
 </body>
 
 </html>
+
+
+
+

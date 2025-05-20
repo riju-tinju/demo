@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
@@ -437,7 +436,7 @@
     <!-- Logo -->
     <div class="logo flex items-center">
       <!-- <h1 class="text-2xl lg:text-3xl font-bold text-primary">Brewed</h1> -->
-      <img src="/assets/logo.svg" style="height: 48px;width:auto"></img>
+      <img src="/logo.svg" style="height: 48px;width:auto"></img>
     </div>
 
     <!-- Search Bar (Flexible Width) -->
@@ -1147,7 +1146,7 @@ function loadMoreProducts(filterObject) {
     })
     .then(data => {
       const elapsed = Date.now() - skeletonShownAt;
-      const wait = elapsed < 1000 ? 1000 - elapsed : 0;
+      const wait = elapsed < 3000 ? 3000 - elapsed : 0;
 
       setTimeout(() => {
         // Step 5: Remove skeletons

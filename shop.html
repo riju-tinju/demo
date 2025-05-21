@@ -1001,21 +1001,18 @@
             renderProducts(data);
           }
         }, wait);
-      })
-      .catch(error => {
+      }).catch(error => {
         const elapsed = Date.now() - skeletonShownAt;
         const remaining = 1500 - elapsed;
         const wait = remaining > 0 ? remaining : 0;
-
+        showToast('An error occurred while loading products');
         setTimeout(() => {
           console.error('Failed to load products:', error);
-          showToast('An error occurred while loading products');
-
           const skeletons = container.querySelectorAll('.skeleton-card');
-          skeletons.forEach(s => s.remove());
-
-          setTimeout(() => location.reload(), 3000);
-        }, wait);
+          // skeletons.forEach(s => s.remove());
+          location.reload()
+          // setTimeout(() => location.reload(), 3000);
+        }, 3000);
       });
   }
 
@@ -1166,10 +1163,13 @@ function loadMoreProducts(filterObject) {
       }, wait);
     })
     .catch(error => {
-      console.error('Failed to load products:', error);
-      showToast('An error occurred while loading more products');
-      const skeletons = container.querySelectorAll('.skeleton-card');
-      skeletons.forEach(s => s.remove());
+     console.error('Failed to load products:', error);
+        const skeletons = container.querySelectorAll('.skeleton-card');
+        showToast('An error occurred while loading products');
+        setTimeout(() => {
+          skeletons.forEach(s => s.remove());
+          productCards.forEach(card => card.classList.remove('hide'));
+        }, 3000);
     });
 }
 
